@@ -10,3 +10,4 @@ class Config:
     INTENTS = discord.Intents.default()
     INTENTS.messages = True
     INTENTS.message_content = True
+    FEED_CHANNEL_ID = 1486455880219365446
