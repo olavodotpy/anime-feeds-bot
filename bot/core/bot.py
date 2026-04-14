@@ -21,9 +21,9 @@ class AnimeFeeds(commands.Bot):
                 cog_name = f"cogs.{filename[:-3]}"
                 try:
                     await self.load_extension(cog_name)
-                    print(f"✅ Cog loaded: {filename}")
+                    print(f"Cog loaded: {filename}")
                 except Exception as e:
-                    print(f"❌ Cog failure {filename}: {type(e).__name__} - {e}")
+                    print(f"Cog failure {filename}: {type(e).__name__} - {e}")
 
 
     async def on_ready(self):
