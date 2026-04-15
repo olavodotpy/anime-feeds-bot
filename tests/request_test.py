@@ -3,7 +3,7 @@ from aiohttp import ClientSession, ClientError, ClientConnectorError, ClientResp
 
 
 
-class Test_RenderData:
+class TestRequest:
     async def get_post(self, url: str = None):
         async with ClientSession() as session:
             try:
@@ -19,7 +19,7 @@ class Test_RenderData:
 
 
 async def main():
-    obj = Test_RenderData()
+    obj = TestRequest()
     response = obj.get_post("http://127.0.0.1:8000/api/last/posts")
     guid = list()
 
