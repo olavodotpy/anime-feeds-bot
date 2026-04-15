@@ -4,6 +4,20 @@ Anime Feeds Bot is a Discord bot that receives JSON data from the Anime Feeds RS
 
 It uses a clean architecture with **Cogs + Service Layer**, facilitating maintenance and growth of the bot.
 
+## 🛠 Technologies Used
+
+<!-- Python -->
+<img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white" alt="Python 3.10+">
+
+<!-- discord.py -->
+<img src="https://img.shields.io/badge/discord.py-2.7.1%20(Mar%202026)-5865F2?logo=discord&logoColor=white" alt="discord.py 2.7.1">
+
+<!-- python-dotenv -->
+<img src="https://img.shields.io/badge/python--dotenv-Environment%20Variables-ECD53F?logo=python&logoColor=black" alt="python-dotenv">
+
+<!-- pydantic -->
+<img src="https://img.shields.io/badge/Pydantic-Data%20Validation-E92063?logo=pydantic&logoColor=white" alt="pydantic">
+
 ---
 
 ## 🚀 How to run the bot
@@ -11,8 +25,8 @@ It uses a clean architecture with **Cogs + Service Layer**, facilitating mainten
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/your-discord-bot.git
-cd your-discord-bot
+git clone https://github.com/olavob/anime-feeds-bot.git
+cd anime-feeds-bot
 ```
 
 ### 2. Create the virtual environment (recommended)
@@ -20,9 +34,9 @@ cd your-discord-bot
 ```bash
 python -m venv venv
 # Windows
-venv\Scripts\activate
+# venv\Scripts\activate
 # Linux / Mac
-source venv/bin/activate
+# source venv/bin/activate
 ```
 
 3. Install the dependencies
@@ -36,7 +50,7 @@ pip install -U -r requirements.txt
 Create a .env file in the project root and add:
 
 ```env
-DISCORD_TOKEN=coloque_seu_token_aqui
+DISCORD_TOKEN=TOKEN_HERE
 ```
 
 Never commit your token to GitHub!
@@ -46,13 +60,6 @@ Never commit your token to GitHub!
 ```Bash
 python main.py
 ```
-
-## 🛠 Technologies Used
-
-Python 3.10+
-discord.py 2.7.1 (March 2026)
-python-dotenv
-pydantic (validation)
 
 ## 🤝 Contributing
 

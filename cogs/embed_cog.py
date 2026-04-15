@@ -1,26 +1,32 @@
 import discord
 from discord.ext import commands, tasks
-from bot.services.feed_service import Fetch
+from bot.services.feed_fetch import Fetch
 from bot.core.config import Config
 from logging import error, log
 
 
 
 class EmbedNews(commands.Cog):
+    """EmbedNews will be where the embed will be rendered with the data from the _smart_polling method."""
     def __init__(self, bot: commands.Bot):
         self.bot = bot
         self.service = Fetch()
         self.send_embed.start()
 
 
-    @tasks.loop(seconds=30)
-    async def send_embed(self):        
+    @tasks.loop(seconds=Config.DEFAULT_TIME)
+    async def send_embed(self):
+        """
+        The send_embed method loads the tasks.loop which, every 600 seconds or 30 minutes, will fetch a new post,
+        generate the embed, and send it to the Discord channel whose ID is in the global variable FEED_CHANNEL_ID in the Config class.
+        It will start this process with a call to the class constructor: send_embed.start().
+        """
         try:
             channel = await self.bot.fetch_channel(Config.FEED_CHANNEL_ID)
 
             for source in ["myanimelist","crunchyroll"]:
                 url = f"http://127.0.0.1:8000/api/last/{source}"
-                response = await self.service.__smart_polling__(url)
+                response = await self.service._smart_polling(url)
 
                 if channel:
 
@@ -34,7 +40,7 @@ class EmbedNews(commands.Cog):
 
                         if post.get("author") != "desconhecido":
                             embed.set_author(
-                                name=post.get("author")
+                                name=f"Author: {post.get("author")}"
                             )
                         
                         embed.set_image(
@@ -42,7 +48,7 @@ class EmbedNews(commands.Cog):
                         )
 
                         embed.add_field(
-                            name=post.get("source"),
+                            name=f"{post.get("source")}:",
                             value=f"Fonte: {post.get("link")}",
                         )
 
